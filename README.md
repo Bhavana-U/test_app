@@ -105,3 +105,75 @@ Your choice (enter number): 2
 ├── package.json
 └── README.md
 ```
+
+## Data Format and How to Add Questions
+
+Questions are stored in `data/questions.json` using category-based JSON objects.
+
+Each category contains:
+
+- `name`: display name shown in the CLI
+- `questions`: array of question objects
+
+Each question object should include:
+
+- `question`: the prompt shown to the player
+- `options`: an array of answer choices
+- `answer`: the zero-based index of the correct option
+- `explanation`: optional explanation displayed after answering
+
+Example structure:
+
+```json
+{
+  "categories": {
+    "javascript": {
+      "name": "JavaScript Basics",
+      "questions": [
+        {
+          "question": "What keyword is used to declare a constant in JavaScript?",
+          "options": ["var", "let", "const", "define"],
+          "answer": 2,
+          "explanation": "The 'const' keyword declares a constant."
+        }
+      ]
+    }
+  }
+}
+```
+
+To add new questions:
+
+1. Open `data/questions.json`.
+2. Add a new question object to an existing category, or create a new category entry.
+3. Ensure the `answer` value matches the correct option index.
+4. Save the file and rerun the CLI.
+
+## npm Scripts
+
+- `npm start` — runs the quiz application
+- `npm test` — runs the Node.js test command configured for the project
+
+## Notes and Limitations
+
+- The app currently reads questions from a local JSON file only.
+- There is no persistence for player history or scores.
+- The question count options are currently limited to all questions, 3 questions, or 5 questions when available.
+- The application is designed for interactive terminal use and is not intended for browser execution.
+- No automated tests are currently included beyond the configured test command.
+
+## Contributing
+
+Contributions are welcome.
+
+Suggested workflow:
+
+1. Fork or branch from the repository.
+2. Make focused changes.
+3. Test the application locally with `npm start`.
+4. Update documentation when behavior or structure changes.
+5. Open a pull request for review.
+
+## License
+
+This project is licensed under the MIT License. See `package.json` for the declared license.
